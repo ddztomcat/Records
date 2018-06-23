@@ -272,6 +272,7 @@ content：指根据该子元素的内容自动布局。有的用户代理没有�
 当 item-1 基准值取 0% 的时候，是把该项目视为零尺寸的，故即便声明其尺寸为 140px，也并没有什么用，形同虚设
 
 而 item-2 基准值取 auto 的时候，根据规则基准值使用值是主尺寸值即 100px，故这 100px 不会纳入剩余空间
+
 5. #### 获取窗口左边上边位置
 ```javascript
     let leftPos = (typeof window.screenLeft === 'number') ? window.screenLeft : window.screenX
