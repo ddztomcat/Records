@@ -1,3 +1,5 @@
+#目录
+- [markdown](https://github.com/ddztomcat/Records/blob/master/markdown.md)
 # Records
 1. #### 如何用js判断一个对象是不是Array
   + Array.isArray(obj) 调用数组的isArray方法
