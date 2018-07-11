@@ -1,4 +1,4 @@
-#目录
+# 目录
 - [markdown](https://github.com/ddztomcat/Records/blob/master/markdown.md)
 # Records
 1. #### 如何用js判断一个对象是不是Array
