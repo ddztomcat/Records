@@ -1,5 +1,8 @@
 # 目录
-- [markdown](https://github.com/ddztomcat/Records/blob/master/markdown.md)
+- [markdown语法](https://github.com/ddztomcat/Records/blob/master/markdown.md)
+- [手写promise](https://github.com/ddztomcat/Records/blob/master/MyPromise.js)
++ [正经笔记](https://github.com/ddztomcat/Records/blob/master/notes.md)
++ [一次分享](https://github.com/ddztomcat/Records/blob/master/share/%E7%AE%80%E5%8D%95%E7%AE%97%E6%B3%95%E5%88%86%E4%BA%AB.pptx)
 # Records
 1. #### 如何用js判断一个对象是不是Array
   + Array.isArray(obj) 调用数组的isArray方法
