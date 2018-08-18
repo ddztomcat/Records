@@ -13,3 +13,14 @@
 + TCP面向连接、可靠的如：http、https、Ftp、SMTP;UDP是无连接的，尽最大努力交付如：直播、语音
 + Typescript 中的类型、值；class C {} 会产生一个类型（指的它的实例结构）和一个值（指向它的构造函数）
 + UMD模块实际是CMD和AMD的结合
++ 当你设置document.cookie = 'test=123'时，仅仅是会话cookie，<strong>浏览器关闭后cookie消失</strong>，过期时间可能是1969-12-31T23:59:59.000Z，至少在chrome表现是这样
+### 几种height的区别
++ clientHeight: 包括padding但不包括border、水平滚动条的高度、margin(可以通过 CSS height + CSS padding - 水平滚动条高度 (如果存在)来计算)
++ offsetHeight: 包括padding、border、滚动条的高度、但不包括margin
++ scrollHeight: clientHeight + 滚动部分
++ scrollTop: 向下滚动的距离
++ offsetTop: 一个元素的 scrollTop 值是这个元素的顶部到它的最顶部可见内容（的顶部）的距离的度量。
++ window.innerWidth: 浏览器视口的宽度，包含滚动条
++ window.outerWidth: 浏览器整体的宽度，包括侧边栏
++ HTMLElement.offsetTop: 距离当前元素父元素顶部border的值
+> 滚动条的高度是包括在height里边

@@ -1,0 +1,78 @@
+<!Doctype>
+<html>
+
+<head>
+    <title>测试</title>
+    <script src="./test.js"></script>
+    <style>
+        .parent {
+            width: 600px;
+            height: 400px;
+            margin: 20px;
+            border: 4px solid salmon;
+            padding: 10px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-300px, -300px);
+            background: gray
+        }
+        .wrapper {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-150px, -75px);
+            width: 300px;
+            height: 150px;
+            margin: 20px;
+            padding: 10px;
+            border: 5px solid red;
+            background: goldenrod;
+            overflow: auto;
+        }
+
+        p {
+            font-size: 30px;
+        }
+        .test {
+            width: 30px;
+            height: 30px;
+            border: 5px red
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="wrapper">
+            <div id="test">
+            <p>sdfgiiiiiiiiiidsfsdfsdfsdf</p>
+            <p>sdfgiiiiiiiiiidsfsdfsdfsdf</p>
+            <p>sdfgiiiiiiiiiidsfsdfsdfsdf</p>
+            <p>sdfgiiiiiiiiiidsfsdfsdfsdf</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    var d1 = document.querySelector('.parent')
+    var d2 = document.querySelector('.wrapper')
+    var d3 = document.querySelector('#test')
+    console.log('d1 clientHeight', d1.clientHeight)
+    console.log('d1 offsetHeight', d1.offsetHeight)
+    console.log('d1 scrollHeight', d1.scrollHeight)
+    console.log('d2 clientHeight', d2.clientHeight)
+    console.log('d2 offsetHeight', d2.offsetHeight)
+    console.log('d2 scrollHeight', d2.scrollHeight)
+    console.log('d3 clientHeight', d3.clientHeight)
+    console.log('d3 offsetHeight', d3.offsetHeight)
+    console.log('d3 scrollHeight', d3.scrollHeight)
+    console.log('d3 offsetTop', d3.offsetTop)
+    console.log(d2.getBoundingClientRect())
+    d2.addEventListener('scroll',function() {
+        console.log(d2.scrollTop)
+    },false)
+</script>
+
+</html>
