@@ -24,3 +24,58 @@
 + window.outerWidth: 浏览器整体的宽度，包括侧边栏
 + HTMLElement.offsetTop: 距离当前元素父元素顶部border的值
 > 滚动条的高度是包括在height里边
+
++ 扩展运算符的解构赋值只能包含对象自身的可枚举属性
++ 对象的扩展运算符（...）用于取出参数对象的所有可遍历属性，拷贝到当前对象之中。
++ ... 用在 = 语句 左边起到收敛 右边发散
+```javascript
+const o = Object.create({ x: 1, y: 2 });
+o.z = 3;
+
+let { x, ...newObj } = o;
+let { y, z } = newObj;
+x // 1
+y // undefined
+z // 3
+```
+### 根据ip区分内网外网
+以下属于内网
+1：10.*.*.*
+2：172.16.*.*至172.31.*.*
+3：192.168.*.* （*为0到255之间的任意数字）
+
+
+### Number
+```javascript
+Number('') 0
+Number(undefined) NaN
+Number(false) 0
+Number(null) 0
+Number('123') 123
+Number('123a') NaN
+Number({}) NaN
+```
+### try catch setTimeout Promise
+```javascript
+function testB() {
+    try {
+        setTimeout(() => {
+            throw Error('444')
+        },3000)
+    } catch (error) {
+        console.log('555555')
+    }
+}
+function testB() {
+    try {
+        new Promise(res => {
+            setTimeout(() => res(1), 3000)
+        }).then(res => {
+           throw Error(res)
+       })
+    } catch (error) {
+        console.log('555555')
+    }
+}
+// try catch 并不能捕获，但promise 的async await 写法可以更加可控一些
+```
