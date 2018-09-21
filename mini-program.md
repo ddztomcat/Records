@@ -8,3 +8,5 @@
 + 调用页面路由带的参数可以在目标页面的onLoad中获取。
 + import可以在该文件中使用目标文件定义的template
 + include 可以将目标文件除了 <template/> <wxs/> 外的整个代码引入，相当于是拷贝到 include 位置
++ 小程序canvas 画图绘制图片时在安卓会有样式错乱， setTimeout 延迟可以hack
++ cover-image cover-view 中的css 样式在安卓会有兼容性 border-radius 过大
