@@ -25,25 +25,75 @@
 + HTMLElement.offsetTop: 距离当前元素父元素顶部border的值
 > 滚动条的高度是包括在height里边
 
-+ 扩展运算符的解构赋值只能包含对象自身的可枚举属性
-+ 对象的扩展运算符（...）用于取出参数对象的所有可遍历属性，拷贝到当前对象之中。
-+ ... 用在 = 语句 左边起到收敛 右边发散
-```javascript
-const o = Object.create({ x: 1, y: 2 });
-o.z = 3;
-
-let { x, ...newObj } = o;
-let { y, z } = newObj;
-x // 1
-y // undefined
-z // 3
-```
 ### 根据ip区分内网外网
 以下属于内网
 1：10.*.*.*
 2：172.16.*.*至172.31.*.*
 3：192.168.*.* （*为0到255之间的任意数字）
+### for in 遍历对象自身及原型链上的不重复的可枚举属性
+```javascript
+let a = {
+  x: 1
+};
+function People() {
+  this.name = "1";
+}
+People.prototype = {
+  tel: "2"
+};
+let b = new People();
 
+for (let i in a) {
+  console.log(i);
+  // x
+}
+for (let i in b) {
+  console.log(i);
+  //name tel
+}
+
+Object.defineProperty(a, "y", {
+  enumerable: true,
+  configurable: false,
+  writable: false,
+  value: "2"
+});
+for (let i in a) {
+  console.log(i);
+  // x y
+}
+Object.defineProperty(a, "z", {
+  enumerable: false,
+  configurable: false,
+  writable: false,
+  value: "3"
+});
+for (let i in a) {
+  console.log(i);
+  // x y
+}
+let c = {};
+let d = Object.create(null);
+console.log(c.__proto__, d.__proto__);
+// {} undefined
+
+function H() {
+  this.n = "1";
+}
+H.prototype = {
+  h: "h"
+};
+function P() {
+    this.p = 'p'
+}
+P.prototype = new H()
+
+let e = new P()
+for(let i in e) {
+    console.log(i)
+    // p n h
+}
+```
 
 ### Number
 ```javascript
