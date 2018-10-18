@@ -24,7 +24,9 @@
 + window.outerWidth: 浏览器整体的宽度，包括侧边栏
 + HTMLElement.offsetTop: 距离当前元素父元素顶部border的值
 > 滚动条的高度是包括在height里边
-
++ :last-child 代表在一群兄弟元素中的最后一个元素并且是指定的类型
++ :last-of-type 代表在一群兄弟元素中的指定类型的最后一个元素
++ void 关键字 执行后面的表达式并返回undefined javascript: void 0
 ### 根据ip区分内网外网
 以下属于内网
 1：10.*.*.*
@@ -128,4 +130,15 @@ function testB() {
     }
 }
 // try catch 并不能捕获，但promise 的async await 写法可以更加可控一些
+```
+### switch case 比较使用的是 ===
+```javascript
+let a = 1
+switch(a) {
+    case '1':
+    console.log(222);
+    break;
+    default:
+    console.log(333)
+}// 333
 ```
