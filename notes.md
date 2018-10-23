@@ -14,6 +14,7 @@
 + Typescript 中的类型、值；class C {} 会产生一个类型（指的它的实例结构）和一个值（指向它的构造函数）
 + UMD模块实际是CMD和AMD的结合
 + 当你设置document.cookie = 'test=123'时，仅仅是会话cookie，<strong>浏览器关闭后cookie消失</strong>，过期时间可能是1969-12-31T23:59:59.000Z，至少在chrome表现是这样
++ transform: translateZ(0); 在做动画特效时来开启硬件加速
 ### 几种height的区别
 + clientHeight: 包括padding但不包括border、水平滚动条的高度、margin(可以通过 CSS height + CSS padding - 水平滚动条高度 (如果存在)来计算)
 + offsetHeight: 包括padding、border、滚动条的高度、但不包括margin
@@ -35,6 +36,32 @@
     1英寸约等于2.54cm
 
 ![](images/20170421164449664.png)
+### CSS 层叠上下文（stacking context）
+满足以下任一条件的元素，会形成新的层级上下文，新的层级上下文默认z-index:0。<strong>子元素的 z-index 值只在父级层叠上下文中有意义。子级层叠上下文被自动视为父级层叠上下文的一个独立单元。</strong>
++ 根元素html
++ z-index不为auto的绝对/相对定位
++ z-index不为auto的flex项目即父元素display:flex|inline-flex
++ opacity小于1或transform不为none
++ 等等
+[详情细节](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Understanding_z_index/The_stacking_context)
+[介绍](https://developer.mozilla.org/en/CSS/Understanding_z-index/Stacking_and_float)
+### 浏览器渲染
+提高动画的优化不得不提及浏览器是如何渲染一个页面。在从服务器中拿到数据后，浏览器会先做解析三类东西：
+
++ 解析html,xhtml,svg这三类文档，形成dom树。
++ 解析css，产生css rule tree。
++ 解析js，js会通过api来操作dom tree和css rule tree。
+
+解析完成之后，浏览器引擎会通过dom tree和css rule tree来构建rendering tree：
+
++ rendering tree和dom tree并不完全相同，例如：<head></head>或display:none的东西就不会放在渲染树中。
++ css rule tree主要是完成匹配，并把css rule附加给rendering tree的每个element。
+
+在渲染树构建完成后，
+
++ 浏览器会对这些元素进行定位和布局，这一步也叫做reflow或者layout。
++ 浏览器绘制这些元素的样式，颜色，背景，大小及边框等，这一步也叫做repaint。
++ 然后浏览器会将各层的信息发送给GPU，GPU会将各层合成；显示在屏幕上。
 ### 根据ip区分内网外网
 以下属于内网
 1：10.*.*.*
@@ -149,4 +176,40 @@ switch(a) {
     default:
     console.log(333)
 }// 333
+```
+### Proxy拦截属性
+```javascript
+var person = {
+  name: "张三"
+};
+
+var proxy = new Proxy(person, {
+  get: function(target, property) {
+      // 如果对象具有该属性
+    if (property in target) {
+      return target[property];
+    } else {
+      throw new ReferenceError("Property \"" + property + "\" does not exist.");
+    }
+  }
+});
+```
+### 禁止浏览器缓存
+html中
+```html
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+```
+response
+```javascript
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+response.setHeader("Pragma", "no-cache");
+response.setHeader("Expires", 0);
+```
+#### 判断一个对象是不是数组
+```javascript
+    function isArray(value) {
+      return Object.prototype.toString().apply(value) === '[object array]';
+    };
 ```
