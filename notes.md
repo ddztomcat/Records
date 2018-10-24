@@ -213,3 +213,18 @@ response.setHeader("Expires", 0);
       return Object.prototype.toString().apply(value) === '[object array]';
     };
 ```
+#### JSONP
+    JSONP只能发送get请求，JSONP原理是创建script，因为script只能get请求
+JSON劫持：
+    用户A已经登录www.test.com网站，当用户信息仍然有效时，在网站浏览时点击恶意链接跳转到www.bbbb.com下，该页面中有恶意script代码`<script src='//www.test.com/jsonp'>` 借用之前的cookie请求数据
+
+预防
+    
+    1、refer 白名单
+    2、session中的随机数token
+    3、JSON Web Token
+
+XSS漏洞:
+    callback参数过滤，防止类似情形 `callback=<script>fff</script>`
+
+![](images/menu.saveimg.savepath20181024144915.jpg)
