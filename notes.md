@@ -207,13 +207,13 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 response.setHeader("Pragma", "no-cache");
 response.setHeader("Expires", 0);
 ```
-#### 判断一个对象是不是数组
+### 判断一个对象是不是数组
 ```javascript
     function isArray(value) {
       return Object.prototype.toString().apply(value) === '[object array]';
     };
 ```
-#### JSONP
+### JSONP
     JSONP只能发送get请求，JSONP原理是创建script，因为script只能get请求
 JSON劫持：
     用户A已经登录www.test.com网站，当用户信息仍然有效时，在网站浏览时点击恶意链接跳转到www.bbbb.com下，该页面中有恶意script代码`<script src='//www.test.com/jsonp'>` 借用之前的cookie请求数据
@@ -228,3 +228,14 @@ XSS漏洞:
     callback参数过滤，防止类似情形 `callback=<script>fff</script>`
 
 ![](images/menu.saveimg.savepath20181024144915.jpg)
+
+### let var const
+    TDZ: 在当前作用域内，在声明变量之前的区域叫临时死区
+```javascript
+if (true) {
+  //这块区域是TDZ，访问a会报错
+  let a = 1
+}
+```
+
+![](images/3566065707-5b824d5477eea_articlex.png)
