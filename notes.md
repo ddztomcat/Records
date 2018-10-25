@@ -237,5 +237,26 @@ if (true) {
   let a = 1
 }
 ```
-
 ![](images/3566065707-5b824d5477eea_articlex.png)
+```javascript
+let x = 0
+function test() {
+    let x = 1
+    for(let x = 0; x < 4; x++);
+    if(true) {
+        let x = 3
+    }
+    // 不会报错
+}
+
+function test(x) {
+    // let x = 1
+    for(let x = 0; x < 4; x++);
+    // 不会报错
+}
+
+function test(x) {
+    let x = 1
+    // 报错
+}
+```
