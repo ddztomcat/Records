@@ -15,6 +15,29 @@
 + UMD模块实际是CMD和AMD的结合
 + 当你设置document.cookie = 'test=123'时，仅仅是会话cookie，<strong>浏览器关闭后cookie消失</strong>，过期时间可能是1969-12-31T23:59:59.000Z，至少在chrome表现是这样
 + transform: translateZ(0); 在做动画特效时来开启硬件加速
+### defer async
+    defer：并行加载，执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。
+    async：并行加载，加载完之后立即执行
+![](images/284aec5bb7f16b3ef4e7482110c5ddbb_articlex.jpg)
+### load DOMContentLoaded page
+    DOMContentLoaded：当初始的 HTML 文档被完全加载和解析完成之后，DOMContentLoaded 事件被触发，而无需等待样式表、图像和子框架的完成加载。注意：DOMContentLoaded 事件必须等待其所属script之前的样式表加载解析完成才会触发。
+    load：当一个资源及其依赖资源已完成加载时，将触发load事件。
+    pageshow：当一条会话历史记录被执行的时候将会触发页面显示(pageshow)事件。(这包括了后退/前进按钮操作，同时也会在onload 事件触发后初始化页面时触发)
+```javascript
+<script>
+  window.addEventListener("load", function(event) {
+    console.log("所有资源都加载完毕");
+  });
+</script>
+```
+[参考链接](https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded)
+### Blob 转 File
+```javascript
+var blob = new Blob(byteArrays, { type: contentType });
+var file = new File([blob], filename, {type: contentType, lastModified: Date.now()});
+
+var file = new File([byteArrays], filename, {type: contentType, lastModified: Date.now()});
+```
 ### 几种height的区别
 + clientHeight: 包括padding但不包括border、水平滚动条的高度、margin(可以通过 CSS height + CSS padding - 水平滚动条高度 (如果存在)来计算)
 + offsetHeight: 包括padding、border、滚动条的高度、但不包括margin
@@ -258,5 +281,59 @@ function test(x) {
 function test(x) {
     let x = 1
     // 报错
+}
+```
+### class 内的方法都定义到prototype
+```javascript
+class People {
+    test() {
+
+    }
+}
+// 等同于
+let People = function () {
+}
+People.prototype.test = function () {}
+```
+### pm2 配置文件
+```javascript
+{
+  "apps": [{
+      "name": "wuwu",                             // 项目名          
+      "script": "./bin/www",                      // 执行文件
+      "cwd": "./",                                // 根目录
+      "args": "",                                 // 传递给脚本的参数
+      "interpreter": "",                          // 指定的脚本解释器
+      "interpreter_args": "",                     // 传递给解释器的参数
+      "watch": true,                              // 是否监听文件变动然后重启
+      "ignore_watch": [                           // 不用监听的文件
+          "node_modules",
+          "logs"
+      ],
+      "exec_mode": "cluster_mode",                // 应用启动模式，支持fork和cluster模式
+      "instances": 4,                             // 应用启动实例个数，仅在cluster模式有效 默认为fork；或者 max
+      "max_memory_restart": 8,                    // 最大内存限制数，超出自动重启
+      "error_file": "./logs/app-err.log",         // 错误日志文件
+      "out_file": "./logs/app-out.log",           // 正常日志文件
+      "merge_logs": true,                         // 设置追加日志而不是新建日志
+      "log_date_format": "YYYY-MM-DD HH:mm:ss",   // 指定日志文件的时间格式
+      "min_uptime": "60s",                        // 应用运行少于时间被认为是异常启动
+      "max_restarts": 30,                         // 最大异常重启次数，即小于min_uptime运行时间重启次数；
+      "autorestart": true,                        // 默认为true, 发生异常的情况下自动重启
+      "cron_restart": "",                         // crontab时间格式重启应用，目前只支持cluster模式;
+      "restart_delay": "60s"                      // 异常重启情况下，延时重启时间
+      "env": {
+         "NODE_ENV": "production",                // 环境参数，当前指定为生产环境 process.env.NODE_ENV
+         "REMOTE_ADDR": "爱上大声地"               // process.env.REMOTE_ADDR
+      },
+      "env_dev": {
+          "NODE_ENV": "development",              // 环境参数，当前指定为开发环境 pm2 start app.js --env_dev
+          "REMOTE_ADDR": ""
+      },
+      "env_test": {                               // 环境参数，当前指定为测试环境 pm2 start app.js --env_test
+          "NODE_ENV": "test",
+          "REMOTE_ADDR": ""
+      }
+  }]
 }
 ```
