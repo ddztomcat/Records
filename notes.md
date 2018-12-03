@@ -85,6 +85,12 @@ var file = new File([byteArrays], filename, {type: contentType, lastModified: Da
 + 浏览器会对这些元素进行定位和布局，这一步也叫做reflow或者layout。
 + 浏览器绘制这些元素的样式，颜色，背景，大小及边框等，这一步也叫做repaint。
 + 然后浏览器会将各层的信息发送给GPU，GPU会将各层合成；显示在屏幕上。
+### delete 删除属性
+```javascript
+// 当属行为引用类型时需要先赋值为null
+instances[id] = null;
+delete instances[id];
+```
 ### 根据ip区分内网外网
 以下属于内网
 1：10.*.*.*
