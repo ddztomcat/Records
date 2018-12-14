@@ -42,3 +42,13 @@ function getQueryUrl(query, key) {
     @media (-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2)
       transform: scaleY(0.5)
 ```
+### 正则表达式只允许输入0-100且最多两位小数
+```javascript
+'rrr56.5656'.replace(/[^\d.]/g, '').replace(/^((0\.\d{1,2})|(([1-9]\d{0,2})(\.\d{1,2})?))(\d*)$/, '$1|$6')
+// $1 ((0\.\d{1,2})|(([1-9]\d{0,2})(\.\d{1,2})?))
+// $2 (0\.\d{1,2})
+// $3 (([1-9]\d{0,2})(\.\d{1,2})?))
+// $4 ([1-9]\d{0,2})
+// $5 (\.\d{1,2})
+// $6 (\d*)
+```

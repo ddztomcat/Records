@@ -15,6 +15,9 @@
 + UMD模块实际是CMD和AMD的结合
 + 当你设置document.cookie = 'test=123'时，仅仅是会话cookie，<strong>浏览器关闭后cookie消失</strong>，过期时间可能是1969-12-31T23:59:59.000Z，至少在chrome表现是这样
 + transform: translateZ(0); 在做动画特效时来开启硬件加速
++ input标签在type=number时maxlength不会起作用
++ String replace 方法的第一个参数为正则表达式时，$n将<strong>正则表达式匹配到的字符串用捕获组代替</strong>
++ IOS 的input的disabled会自动添加样式，可以用readonly属性代替
 ### defer async
     defer：并行加载，执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。
     async：并行加载，加载完之后立即执行
