@@ -18,6 +18,11 @@
 + input标签在type=number时maxlength不会起作用
 + String replace 方法的第一个参数为正则表达式时，$n将<strong>正则表达式匹配到的字符串用捕获组代替</strong>
 + IOS 的input的disabled会自动添加样式，可以用readonly属性代替
++ 正则表达式中'-'中有在字符集[]中才有意义，'.'在字符集中无意义，只单纯表示'.'
++ vue 中input的value可以通过v-model或者手动修改$ref.value达到实时更新
++ vue 中$refs在computed或watch中不能使用，可以使用Vue.nextTick
++ var a = [] a[7] = 8 now a.length === 8预检
++ CORS post时 content-type:'application/json' 属于非简单请求需要预检；当服务器端设置Credentials：true时客户端同样需要设置，并且Access-Control-Allow-Origin不允许为"*"
 ### defer async
     defer：并行加载，执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。
     async：并行加载，加载完之后立即执行
