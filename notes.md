@@ -23,6 +23,21 @@
 + vue 中$refs在computed或watch中不能使用，可以使用Vue.nextTick
 + var a = [] a[7] = 8 now a.length === 8预检
 + CORS post时 content-type:'application/json' 属于非简单请求需要预检；当服务器端设置Credentials：true时客户端同样需要设置，并且Access-Control-Allow-Origin不允许为"*"
++ round 平铺 repeat 重复，平铺会改变原来元素大小；重复则按照元素本身填充，边界不足时hidden
++ 变换函数是通过数学上的矩阵乘法运算完成的，而矩阵的乘法是不满足交换律的。任意坐标空间内的变换函数或者变换函数的组合，都可以转换为一个矩阵
++ transform-style: preserve-3d;保证所有子元素都处于同一个三维空间，即三维渲染上下文3D rendering context
++ 常规属性left、top，甚至margin-left等，是先生效的，它们的效果其实只有一个，就是改变元素的初始位置，从而改变元素的transform-origin的那个原点位置，然后三维空间的transform是后生效的，它会再基于前面的transform-origin继续改变位置。
++ box-shadow 在透明情况下可能不能如你所愿，可以用filter兼容
++ svg 的viewBox相当于建立一个单独的用户坐标系，之后的transform变换都是在这个坐标系基础上，preserveAspectRatio控制视图的展示，类似background-image-size属性类似
+### css 选择器
+```javascript
+.a + .b {
+  // 匹配紧接在.a之后的.b 且同级（之匹配一个）
+}
+.a ~ .b {
+    // 匹配.a 之后的所有同级.b
+}
+```
 ### defer async
     defer：并行加载，执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。
     async：并行加载，加载完之后立即执行
