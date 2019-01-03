@@ -29,6 +29,13 @@
 + 常规属性left、top，甚至margin-left等，是先生效的，它们的效果其实只有一个，就是改变元素的初始位置，从而改变元素的transform-origin的那个原点位置，然后三维空间的transform是后生效的，它会再基于前面的transform-origin继续改变位置。
 + box-shadow 在透明情况下可能不能如你所愿，可以用filter兼容
 + svg 的viewBox相当于建立一个单独的用户坐标系，之后的transform变换都是在这个坐标系基础上，preserveAspectRatio控制视图的展示，类似background-image-size属性类似
++ background-attachment 针对background-image的，与background-color无关
+### 菲茨法则
+任意一点移动到目标中心位置所需时间与该点到目标的距离和大小有关，距离越大时间越长，目标越大时间越短。
+```javascript
+T = a + b log2(D/W + 1)
+// T=移动设备所需时长；a,b是经验常量，D=设备起始位置和目标位置中心的距离；W=目标的宽度大小
+```
 ### css 选择器
 ```javascript
 .a + .b {
