@@ -4,7 +4,7 @@
 function getQueryUrl(query, key) {
     let reg = /&?(\w+)=([^&]+)(?:$|&)/gmi
     let arr = null
-    while(arr = reg.exec(query)) {
+    while((arr = reg.exec(query)) !== null) {
         if(key === arr[1]) return arr[2]
     }    
     return ''

@@ -30,6 +30,8 @@
 + box-shadow 在透明情况下可能不能如你所愿，可以用filter兼容
 + svg 的viewBox相当于建立一个单独的用户坐标系，之后的transform变换都是在这个坐标系基础上，preserveAspectRatio控制视图的展示，类似background-image-size属性类似
 + background-attachment 针对background-image的，与background-color无关
++ backgroung-position 背景图会从当前位置开始，逐步变化，平铺。。。
++ http协议应用层，get put应该遵从幂等性，post 不遵循
 ### 菲茨法则
 任意一点移动到目标中心位置所需时间与该点到目标的距离和大小有关，距离越大时间越长，目标越大时间越短。
 ```javascript
@@ -43,6 +45,9 @@ T = a + b log2(D/W + 1)
 }
 .a ~ .b {
     // 匹配.a 之后的所有同级.b
+}
+li:first-child:nth-last-child(n+4)::nth-last-child(n+6), li:first-child:nth-last-child(n+4)::nth-last-child(n+6) ~ li {
+    // 列表包含4-6个列表项时，命中所有列表项
 }
 ```
 ### defer async
