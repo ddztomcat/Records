@@ -94,3 +94,36 @@ department = new Department(); // 错误: 不能创建一个抽象类的实例
 department = new AccountingDepartment(); // 允许对一个抽象子类进行实例化和赋值
 department.generateReports(); // 错误: 方法在声明的抽象类中不存在 改成department: AccountingDepartment;
 ```
+### 泛型
++ 泛型函数与泛型函数类型，泛型函数与泛型类，理解何时把参数放在调用签名里和何时放在接口上。
++ 类有两部分：静态部分和实例部分。 泛型类指的是实例部分的类型，所以类的静态属性不能使用这个泛型类型。
+```javascript
+// 这是一个泛型函数
+function identity<T>(arg: T): T {
+    return arg;
+}
+// myIdentity 的类型是一个泛型函数，并用identity初始化
+let myIdentity: <T>(arg: T) => T = identity;
+// 使用带有调用签名的对象字面量来定义泛型函数：
+let myIdentity: {<T>(arg: T): T} = identity;
+// 也可以定义泛型接口
+interface GenericIdentityFn {
+    <T>(arg: T): T;
+}
+let myIdentity: GenericIdentityFn = identity;
+// 升级
+interface GenericIdentityFn<T> {
+    (arg: T): T;
+}
+let myIdentity: GenericIdentityFn<number> = identity;
+```
+```javascript
+interface Lengthwise {
+    length: number;
+}
+// 泛型约束
+function loggingIdentity<T extends Lengthwise>(arg: T): T {
+    console.log(arg.length);  // Now we know it has a .length property, so no more error
+    return arg;
+}
+```

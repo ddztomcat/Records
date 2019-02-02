@@ -120,6 +120,9 @@ var file = new File([byteArrays], filename, {type: contentType, lastModified: Da
 + 浏览器会对这些元素进行定位和布局，这一步也叫做reflow或者layout。
 + 浏览器绘制这些元素的样式，颜色，背景，大小及边框等，这一步也叫做repaint。
 + 然后浏览器会将各层的信息发送给GPU，GPU会将各层合成；显示在屏幕上。
+### generator函数
++ 跟状态机很像，generator函数总是返回一个遍历器对象
++ async 其实就是generator函数的语法糖，await类似yield
 ### delete 删除属性
 ```javascript
 // 当属行为引用类型时需要先赋值为null
