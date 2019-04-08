@@ -135,6 +135,7 @@ delete instances[id];
 2：172.16.*.*至172.31.*.*
 3：192.168.*.* （*为0到255之间的任意数字）
 ### for in 遍历对象自身及原型链上的不重复的可枚举属性
+### Object.keys只获取自身可遍历属性
 ```javascript
 let a = {
   x: 1
@@ -193,6 +194,8 @@ function P() {
 P.prototype = new H()
 
 let e = new P()
+// Object.keys只获取自身可遍历属性
+console.log(Object.keys(e))
 for(let i in e) {
     console.log(i)
     // p n h
