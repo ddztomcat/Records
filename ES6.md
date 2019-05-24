@@ -117,4 +117,6 @@ for(let i in e) {
     // p n h
 }
 ```
+#### set map
++ WeakMap 弱引用的只是键名，而不是键值。键值依然是正常引用
 
