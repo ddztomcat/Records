@@ -51,7 +51,7 @@ li:first-child:nth-last-child(n+4)::nth-last-child(n+6), li:first-child:nth-last
 }
 ```
 ### defer async
-    defer：并行加载，执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。
+    defer：并行加载，执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前执行。
     async：并行加载，加载完之后立即执行
 ![](images/284aec5bb7f16b3ef4e7482110c5ddbb_articlex.jpg)
 ### load DOMContentLoaded page

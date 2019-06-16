@@ -1,26 +1,164 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-    span {
-      padding: 50%;
-      background-color: gray;
-      border: 2px dashed #cd00cd;
+<style>
+  a {
+    color: #ccc !important;
+
+  }
+  #con a {
+    color: #ED1A1A;
+  }
+  .test a {
+    color: green;
+  }
+  h1 a {
+    color: black;
+  }
+</style>
+<head>
+  <style>
+    .circleProgress_wrapper {
+      width: 200px;
+      height: 200px;
+      margin: 50px auto;
+      position: relative;
+      border: 1px solid #ddd;
     }
-    button {
+
+    .wrapper {
+      width: 100px;
+      height: 200px;
       position: absolute;
-      clip: rect(0, 0, 0, 0);
+      top: 0;
+      overflow: hidden;
     }
-    label {
-      display: inline-block;
-      line-height: 20px;
-      padding: 10px;
+
+    .right {
+      right: 0;
     }
-    </style>
-  </head>
-  <body>
-    <!-- <span></span> -->
-    <button id="btn"></button>
-    <label for="btn">按钮</label>
-  </body>
+
+    .left {
+      left: 0;
+    }
+
+    .circleProgress {
+      width: 160px;
+      height: 160px;
+      border: 20px solid rgb(232, 232, 12);
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    .rightcircle {
+      border-top: 20px solid green;
+      border-right: 20px solid green;
+      right: 0;
+      animation: circleProgressLoad_right 5s linear infinite;
+    }
+
+    .leftcircle {
+      border-bottom: 20px solid green;
+      border-left: 20px solid green;
+      left: 0;
+      animation: circleProgressLoad_left 5s linear infinite;
+    }
+
+    @keyframes circleProgressLoad_right {
+      0% {
+        border-top: 20px solid #ED1A1A;
+        border-right: 20px solid #ED1A1A;
+        transform: rotate(45deg);
+      }
+
+      50% {
+        border-top: 20px solid rgb(232, 232, 12);
+        border-right: 20px solid rgb(232, 232, 12);
+        border-left: 20px solid rgb(81, 197, 81);
+        border-bottom: 20px solid rgb(81, 197, 81);
+        transform: rotate(225deg);
+      }
+
+      100% {
+        border-left: 20px solid green;
+        border-bottom: 20px solid green;
+        transform: rotate(225deg);
+      }
+    }
+
+    @keyframes circleProgressLoad_left {
+      0% {
+        border-bottom: 20px solid #ED1A1A;
+        border-left: 20px solid #ED1A1A;
+        transform: rotate(45deg);
+      }
+
+      50% {
+        border-bottom: 20px solid rgb(232, 232, 12);
+        border-left: 20px solid rgb(232, 232, 12);
+        border-top: 20px solid rgb(81, 197, 81);
+        border-right: 20px solid rgb(81, 197, 81);
+        transform: rotate(45deg);
+      }
+
+      100% {
+        border-top: 20px solid green;
+        border-right: 20px solid green;
+        border-bottom: 20px solid green;
+        border-left: 20px solid green;
+        transform: rotate(225deg);
+      }
+    }
+    .parent {
+      background: green;
+    }
+    .parent .item:last-child{
+      background: red;
+    }
+    .parent .item:last-of-type{
+      background: blue;
+    }
+    .parent .item:nth-of-type(2){
+      background: white;
+    }
+    .parent .item:nth-child(2){
+      background: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="con">
+    <h1 class="test">
+      <a href="">545</a>
+    </h1>
+  </div>
+  <div class="circleProgress_wrapper" style="background: brown">
+    <div class="wrapper right">
+      <div class="circleProgress rightcircle"></div>
+    </div>
+    <div class="wrapper left">
+      <div class="circleProgress leftcircle"></div>
+    </div>
+  </div>
+  <div class="parent">
+    <div class="item">2432</div>
+    <span class="item">456456</span>
+    <p class="item">435346</p>
+    <div class="item">2432</div>
+    <span class="item">456456</span>
+    <p class="item">435346</p>
+    <div class="item">2432</div>
+    <span class="item">456456</span>
+    <p class="item">435346</p>
+  </div>
+  <script>
+  let a = document.querySelector('.circleProgress_wrapper')
+  let b = getComputedStyle(a)
+  console.log(b.backgroundColor, a.style.backgroundColor)
+  </script>
+  <script src="./test.js"></script>
+</body>
+
 </html>

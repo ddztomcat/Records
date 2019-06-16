@@ -76,21 +76,19 @@ function judgeTimeInWeek(target, t) {
 ```js
 // 是否立即执行 immediate = true 立即执行 否 延迟t ms 后执行
 function debounce(fun, t, immediate = false) {
-  let lastTime = 0
   let id = null
-  let excid = null
   let exc = immediate
   return function(...arg) {
     if(exc) {
       exc = false
-      fun.apply(null, arg)
+      fun.apply(this, arg)
     }else {
-      clearInterval(id)
-      id = setInterval(() => {
-        fun.apply(null, arg)
+      clearTimeout(id)
+      id = setTimeout(() => {
         if(immediate) {
-          clearInterval(excid)
-          excid = setInterval(() => exc = true, t)
+          exc = true
+        } else {
+          fun.apply(this, arg)
         }
       }, t)
     }
@@ -102,12 +100,13 @@ function throttle(fun, t) {
   return function(...arg) {
     let now = Date.now()
     if(now - lastTime >= t) {
-      fun.apply(null, arg)
+      fun.apply(this, arg)
       lastTime = now
+      clearTimeout(id)
     }else {
-      clearInterval(id)
-      setInterval(() => {
-        fun.apply(null, arg)
+      clearTimeout(id)
+      setTimeout(() => {
+        fun.apply(this, arg)
         lastTime = Date.now()
       })
     }
