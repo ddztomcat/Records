@@ -125,11 +125,18 @@
     .parent .item:nth-child(2){
       background: red;
     }
+    .box {
+      line-height: 96px;
+      background: #ED1A1A;
+    }
+    .box span {
+      line-height: 130px;
+    }
   </style>
 </head>
 
 <body>
-  <div id="con">
+  <!-- <div id="con">
     <h1 class="test">
       <a href="">545</a>
     </h1>
@@ -152,13 +159,11 @@
     <div class="item">2432</div>
     <span class="item">456456</span>
     <p class="item">435346</p>
+  </div> -->
+  <div class="box">
+    <span>sdfsdf</span>
   </div>
-  <script>
-  let a = document.querySelector('.circleProgress_wrapper')
-  let b = getComputedStyle(a)
-  console.log(b.backgroundColor, a.style.backgroundColor)
-  </script>
-  <script src="./test.js"></script>
+
 </body>
 
 </html>
