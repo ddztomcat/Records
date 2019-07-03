@@ -6,7 +6,27 @@
 + Object.assign()： 忽略enumerable为false的属性，只拷贝对象自身的可枚举的属性。
 + 普通解构赋值可以获取到继承的属性
 + 对象的扩展运算符（...）用于取出参数`对象自身的所有可遍历属性`，拷贝到当前对象之中。
-
+```js
+// 扩展运算符的解构赋值只能提取自身属性 普通解构赋值可以获取到继承的属性
+let o1 = { a: 1 };
+let o2 = { b: 2 };
+o2.__proto__ = o1;
+let { ...o3 } = o2;
+o3 // { b: 2 }
+o3.a // undefined
+let a = {
+    s: 1,
+    b: 2
+}
+/// 对象的扩展运算符（...）用于取出参数`对象自身的所有可遍历属性`
+let b = Object.create(a)
+console.log(b.s, b.b)// 1 2
+let {s,...x} = b
+console.log(s,x)// 1 {}
+b.z = 11
+let c = {...b}
+console.log(c) // {z: 11}
+```
 对象obj是可遍历的（iterable），因为具有Symbol.iterator属性。执行这个属性，会返回一个遍历器对象。该对象的根本特征就是具有next方法。每次调用next方法，都会返回一个代表当前成员的信息对象，具有value和done两个属性。
 
 具有Symbol.iterator属性，都可以被for of 访问，也可以用扩展运算符转化成数组
