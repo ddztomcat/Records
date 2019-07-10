@@ -1,17 +1,29 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" @dblclick="handleClick">
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import routes from './routes';
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      curIndex: 0
+    }
+  },
+  mounted() {
+
+  },
+  methods: {
+    handleClick() {
+      console.log(34)
+      this.$router.push({
+        path: routes[this.curIndex].path
+      })
+      this.curIndex = (this.curIndex + 1) % routes.length
+    }
   }
 }
 </script>
@@ -23,6 +35,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
