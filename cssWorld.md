@@ -5,3 +5,5 @@
 + 替换元素img embed video input[type=image]iframe  object-fit object-position
 + display:table-cell最强的应用是可以任意个数列表的等宽效果。
 + :before :after伪类 不适用可替换元素
++ table table-layout word-break white-space colspan rowspan border-collapse: collapse;
++ transition height 0 -> auto 用max-height代替

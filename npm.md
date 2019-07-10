@@ -1,0 +1,1 @@
++ mac安装权限时--unsafe-perm可能会有用 sudo npm i --unsafe-perm  sudo chown -R $(whoami) /usr/local/lib/node_modules/  删除lock文件重装
