@@ -11,7 +11,7 @@
 
 <script>
 
-import code from "./const";
+import code from "./const.1.js";
 export default {
     props: {},
     data() {
@@ -29,7 +29,7 @@ export default {
 </script>
 <style>
 .CodeMirror {
-    height: 500px;
+    height: 350px;
 }
 </style>
 

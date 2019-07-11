@@ -2,13 +2,12 @@
     <div class="chapter01">
         <h1>show me code</h1>
         <live-preview
-            code="
-    <template>
+            code="<template>
     <virtual-list></virtual-list>
 </template>
 
 <script>
-    import virtualList from '../components/virtualList'
+    import virtualList from '../components/demo'
 export default {
     props: {},
     data() {
@@ -23,18 +22,18 @@ export default {
         virtualList
     }
 };
-</script>
-  "
+</script>"
         ></live-preview>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     props: {},
     data() {
         return {
-            list: new Array(1000)
+            code: ""
         };
     },
     computed: {},

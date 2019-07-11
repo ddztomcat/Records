@@ -19,7 +19,6 @@ export default {
     props: {},
     data() {
         return {
-            list: new Array(1000)
         };
     },
     computed: {},

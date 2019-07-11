@@ -10,7 +10,6 @@ export default {
     props: {},
     data() {
         return {
-            list: new Array(1000)
         };
     },
     computed: {},
@@ -23,10 +22,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.item {
-    height: 30px;
-    border: 1px solid #cccccc;
-}
 .chapter01 {
     box-sizing: border-box;
     height: 100vh;
