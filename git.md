@@ -9,3 +9,5 @@ git add .
 git rebase --continue
 git rebase --skip
 git rebase --abort
+git pull origin master --allow-unrelated-histories
+git push --set-upstream origin

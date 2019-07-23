@@ -7,3 +7,4 @@
 + :before :after伪类 不适用可替换元素
 + table table-layout word-break white-space colspan rowspan border-collapse: collapse;
 + transition height 0 -> auto 用max-height代替
++ elem.style.属性名="值"，修改元素的内敛样式
