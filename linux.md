@@ -10,4 +10,6 @@ vim /etc/profile
 export PATH=/your/path:$PATH
 # 4、查看path
 echo $PATH
+# 5、查看ip地址
+ifconfig | grep "inet " | grep -v 127.0.0.1
 ```

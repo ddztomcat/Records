@@ -1,0 +1,2 @@
++ stopPropagation，preventDefault以及stopImmediatePropagation 
+阻止冒泡 阻止事件的默认行为 阻止当前元素的各种冒泡
