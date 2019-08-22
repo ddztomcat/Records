@@ -132,6 +132,15 @@
     .box span {
       line-height: 130px;
     }
+    .span-wrap {
+      color: red
+    }
+    .span-wrap .span1 {
+      color: black;
+    }
+    .span1 ~ .span1 {
+      color: greenyellow
+    }
   </style>
 </head>
 
@@ -160,6 +169,12 @@
     <span class="item">456456</span>
     <p class="item">435346</p>
   </div> -->
+  <div class="span-wrap">
+    <span class="span1">1</span>
+    <span class="span2">2</span>
+    <span class="span1">1</span>
+    <span class="span1">1</span>
+  </div>
   <div class="box">
     <span>sdfsdf</span>
   </div>
