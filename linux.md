@@ -12,4 +12,7 @@ export PATH=/your/path:$PATH
 echo $PATH
 # 5、查看ip地址
 ifconfig | grep "inet " | grep -v 127.0.0.1
+# 6、mac 查看端口号
+sudo lsof -i :9000
+sudo kill -9 716
 ```
