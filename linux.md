@@ -15,4 +15,11 @@ ifconfig | grep "inet " | grep -v 127.0.0.1
 # 6、mac 查看端口号
 sudo lsof -i :9000
 sudo kill -9 716
+# 7、chmod chown
+# 修改权限
+chmod 777 [-R] 文件夹 
+# 改变用户
+chown 改变所属用户
+chown ddz:ddzgroup a.txt
+chown -R ddz:ddzgroup *
 ```
