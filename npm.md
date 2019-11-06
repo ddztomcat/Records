@@ -2,3 +2,5 @@
 + 执行`npm cache verify`或`npm cache clean --force`
 + 重启bash窗口
 + npm init -y 跳过yes
++ npm config get prefix命令获取到prefix的值
++ 本地开发包a下 npm link 到引用包下 npm link a
