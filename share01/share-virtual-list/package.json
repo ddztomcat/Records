@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
-    "codemirror": "^5.48.0",
+    "codemirror": "^5.58.2",
     "core-js": "^2.6.5",
     "virtual-list": "^1.0.1",
     "virtual-list-ddz": "^0.1.1",
