@@ -140,3 +140,6 @@ for(let i in e) {
 #### set map
 + WeakMap 弱引用的只是键名，而不是键值。键值依然是正常引用
 
+#### async await
+generator其实就是JS在语法层面对协程的支持，真正支持与否看运行时环境，高版本的node就是支持的。协程就是主程序和子协程直接控制权的切换，并伴随通信的过程，那么，从generator语法的角度来讲，yield，next就是通信接口，next是主协程向子协程通信，而yield就是子协程向主协程通信
+
