@@ -1,0 +1,2 @@
+如何理解chunk bundle module？
+一个Chunk是一些模块的封装单元。Chunk在构建完成就呈现为bundle。大多数情况下，一个Chunk会生产一个Bundle。但有时候也不完全是一对一的关系
