@@ -50,3 +50,69 @@ location ~ /images/abc/ {
 }
 location ~* /js/.*/\.js
 ```
+
+### root alias
+
+root与alias主要区别在于nginx如何解释location后面的uri，这会使两者分别以不同的方式将请求映射到服务器文件上。
+root的处理结果是：root路径＋location路径
+alias的处理结果是：使用alias路径替换location路径
+alias是一个目录别名的定义，root则是最上层目录的定义。
+
+``` dash
+location ^~ /t/ {
+     root /www/root/html/;
+}
+```
+如果一个请求的URI是/t/a.html时
+web服务器将会返回服务器上的/www/root/html/t/a.html的文件。
+
+```bash
+location ^~ /t/ {
+ alias /www/root/html/new_t/;
+}
+```
+如果一个请求的URI是/t/a.html时，web服务器将会返回服务器上的/www/root/html/new_t/a.html的文件。注意这里是new_t，因为alias会把location后面配置的路径丢弃掉，把当前匹配到的目录指向到指定的目录。
+**注意**
+使用alias时，目录名后面一定要加"/"。
+alias在使用正则匹配时，必须捕捉要匹配的内容并在指定的内容处使用。
+alias只能位于location块中。（root可以不放在location中）
+
+
+### rewrite
+
+```
+server {
+    rewrite 规则 定向路径 重写类型;
+}
+
+规则：可以是字符串或者正则来表示想匹配的目标url
+定向路径：表示匹配到规则后要定向的路径，如果规则里有正则，则可以使用$index来表示正则里的捕获分组
+重写类型：
+last ：相当于Apache里德(L)标记，表示完成rewrite，浏览器地址栏URL地址不变
+break；本条规则匹配完成后，终止匹配，不再匹配后面的规则，浏览器地址栏URL地址不变
+redirect：返回302临时重定向，浏览器地址会显示跳转后的URL地址
+permanent：返回301永久重定向，浏览器地址栏会显示跳转后的URL地址
+```
+```
+server {
+    # 访问 /last.html 的时候，页面内容重写到 /index.html 中
+    rewrite /last.html /index.html last;
+
+    # 访问 /break.html 的时候，页面内容重写到 /index.html 中，并停止后续的匹配
+    rewrite /break.html /index.html break;
+
+    # 访问 /redirect.html 的时候，页面直接302定向到 /index.html中
+    rewrite /redirect.html /index.html redirect;
+
+    # 访问 /permanent.html 的时候，页面直接301定向到 /index.html中
+    rewrite /permanent.html /index.html permanent;
+
+    # 把 /html/*.html => /post/*.html ，301定向
+    rewrite ^/html/(.+?).html$ /post/$1.html permanent;
+
+    # 把 /search/key => /search.html?keyword=key
+    rewrite ^/search\/([^\/]+?)(\/|$) /search.html?keyword=$1 permanent;
+}
+```
+
+> [https://www.jianshu.com/p/0022ffa4046a]
